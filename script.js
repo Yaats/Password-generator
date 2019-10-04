@@ -1,11 +1,29 @@
-let specialCharacterString = "! @ # $ % ^ & * ( ) _ + ~ ` | } { [ ] : ; ? > < , . / - = ";
-let specialCharacterArray = specialCharacterString.split(" ");
+// let character = "!@#$%^&*()_+~`|}{[]:;?><,./-=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
 
-let lowerCaseAlphabetString = "a b c d e f g h i j k l m n o p q r s t u v w x y z";
-let lowerCaseAlphabetArray = lowerCaseAlphabetString.split("");
+// let lengthPick = prompt("Choose the length of your password");
+// lengthPick++;
+// let password = "";
 
-let upperCaseAlphabetString = "A B C D E F G H I J K L M N O P Q R S T U V W X Y Z";
-let upperCaseAlphabetArray = upperCaseAlphabetString.split("");
+// for (var i = 1; i < lengthPick; i++) randomSpecial(i);
 
-let numberString = "0 1 2 3 4 5 6 7 8 9";
-let numberArray = numberString.split("");
+// function randomSpecial() {
+//     let random = Math.floor(Math.random() * character.length);
+//     password = password + character.charAt(random);
+//     console.log(password);
+//     document.querySelector("body > div > h1").innerHTML = password;
+// }
+
+// Copy to clipboard on a click event
+document.querySelector("#copy-button").addEventListener('click', function () {
+    var reference_element = document.querySelector('#to-select-text');
+
+    var range = document.createRange();
+    range.selectNodeContents(reference_element);
+
+    window.getSelection().addRange(range);
+
+    var success = document.execCommand('copy');
+
+    window.getSelection().removeRange(range);
+    alert('Your password has been copied to clipboard');
+});

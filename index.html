@@ -5,8 +5,50 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Password Generator</title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+    <link rel="stylesheet" href="assets/style.css">
 </head>
 <body>
+    <h2><img src="/assets/key.svg" alt="key" class="key"> Generate a password:</h2>
+<div class="mainContainer">
+    <h1 id="to-select-text"></h1>
+    <div class="secondContainer">
+            <button class="btn btn-primary col-4" onclick="window.location.reload()">Generate</button>
+            <button class="btn btn-info col-4" id="copy-button">Copy</button>
+    </div>
+</div>
+
+<script>
+    let character = "!@#$%^&*()_+~`|}{[]:;?><,./-=abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789";
+
+    let lengthPick = prompt("Choose the length of your password");
+    lengthPick++;
+    let password = "";
+
+    for (var i = 1; i < lengthPick; i++) randomSpecial(i);
+
+    function randomSpecial() {
+        let random = Math.floor(Math.random() * character.length);
+        password = password + character.charAt(random);
+        console.log(password);
+        document.querySelector("body > div > h1").innerHTML = password;
+    }
     
+ // Copy to clipboard on a click event
+document.querySelector("#copy-button").addEventListener('click', function() {
+	var reference_element = document.querySelector('#to-select-text');
+
+	var range = document.createRange();  
+	range.selectNodeContents(reference_element);
+
+	window.getSelection().addRange(range);
+
+	var success = document.execCommand('copy');
+
+    window.getSelection().removeRange(range);
+    alert('Your password has been copied to clipboard');
+});
+
+</script>
 </body>
 </html>
